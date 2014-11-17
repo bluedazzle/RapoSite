@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head id="header" class="">
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	{% block title %}RaPoSpectre -- 首页{% endblock %}
+</head><!-- /header -->
+<body>
+	{% block picindex %}
+		<div id="dynapic" class="">
+		<figure class="effect-ruby">
+				<img src="../images/index.jpg" alt="img10">
+				<figcaption>
+					<h2>RaPoSpectre's <span>Blog</span></h2>
+					<p>进入博客</p>
+					<a href="#intro">进入博客</a>
+				</figcaption>			
+		</figure>
+	</div><!-- / -->
+	{% endblock %}
+	{% block content %}
+		<div id="" class="indexcontent">
+			<div id="intro" class="">
+				<div class="indextitle">
+					<span>关</span>
+					<br/>
+					<span>于</span>
+				</div>
+				<div class="indexcontent">
+					test
+				</div>
+			</div><!-- / -->
+			<div id="knowledge">
+				<div id="" class="indextitle">
+					<span>姿</span>
+					<br/>
+					<span>势</span>
+				</div><!-- / -->
+				<div class="indexcontent">
+					test
+				</div>
+			</div>
+			<div id="stools" class="">
+				<div class="son_tool">
+					<div class="son_title">
+						<span>最新文章</span>
+					</div>
+					<div class="son_content">
+						{% for itm in rec_list %}
+							<a href=/blog/{{ itm.id }}/ title="">{{ itm.caption }}</a>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="son_tool">
+					<div class="son_title">
+						<span>点击排行</span>
+					</div>
+					<div class="son_content">
+						{% for itm in click_list %}
+							<a href=/blog/{{ itm.id }}/ title="">{{ itm.caption }}</a>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="son_tool">
+					<div class="son_title">
+						<span>最新姿势</span>
+					</div>
+					<div class="son_content">
+						{% for itm in know_list %}
+							<a href=/knowledge/{{ itm.id }}/ title="">{{ itm.question }}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div><!-- / -->
+			<div id="goblog" class="">
+				<a href="/blog/">进入博客</a>
+			</div><!-- / -->
+		</div><!-- / -->
+	{% endblock %}
+</body>
+</html>

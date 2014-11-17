@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head id="header" class="">
+	<link href="/css/know.css" rel="stylesheet" type="text/css" />
+	{% block title %}RaPoSpectre -- 姿势{% endblock %}
+</head><!-- /header -->
+<body>
+	{% block content %}
+		<div id="knowcontent" class="">
+			<div id="knowsearch">
+				<input placeholder="还木有做好~" type="text"/>
+				<button type="submit" >搜索</button>
+			</div>
+			<div id="" class="knowblank">
+				
+			</div><!-- / -->
+			{% for itm in know_list  %}
+				<div id="" class="knowcontent">
+					<div id="" class="knowleft clearfix">
+						<ul id="" class="">
+							<li>疑问</li>
+							<li>姿势</li>
+							<div id="" class="req">
+								{% for itms in itm.requirement.all %}
+								<li><a href=/knowledge/req/{{ itms.id }}/ title="">{{ itms.content }}</a></li>
+								{% endfor %}
+							</div><!-- / -->
+						</ul><!-- / -->
+					</div><!-- / -->
+					<div id="" class="knowright">
+						<ul id="" class="">
+							<li>{{ itm.question }}</li>
+							<li>{{ itm.solve }}</li>
+						</ul><!-- / -->
+					</div><!-- / -->
+				</div><!-- / -->
+			{% endfor %}
+		</div><!-- / -->
+	{% endblock %}
+</body>
+</html>

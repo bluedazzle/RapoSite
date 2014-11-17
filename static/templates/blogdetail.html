@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head id="header" class="">
+	<link href="css/blog.css" rel="stylesheet" type="text/css" />
+	{% block title %}RaPoSpectre -- 博客{% endblock %}
+</head><!-- /header -->
+<body>
+	{% block content %}
+	<div id="picheader" class="">
+		
+	</div><!-- / -->
+	<div id="blogcontent" class="">
+		<div id="blogleft">
+  				<div class="blog_body">
+    				<div class="blog_title clearfix">
+    					<div id="" class="titledate">
+    						<div id="" class="m_d">
+                    <a>{{ art_detail.createTime|date:"d" }}</a>
+                    <a>{{ art_detail.createTime|date:"m" }}</a>
+                </div><!-- / -->
+    						<div id="" class="titlerec">
+    							<span>原</span>
+    							<span>荐<r/span>
+    						</div><!-- / -->
+                <div id="" class="titleyear">
+                  <span>{{ art_detail.createTime|date:"Y" }}年</span>
+                </div><!-- / -->
+    					</div><!-- / -->
+    					<div id="" class="divtitlename">
+    						<a class="titlename" href="#">{{ art_detail.caption }}</a>
+    					</div><!-- / -->
+    					<div id="" class="tagclassif">
+    						<div id="" class="divclassif">
+    							<a href=/blog/classify/{{ art_detail.classification.id }}/>{{ art_detail.classification }}</a>
+    						</div><!-- / -->
+    						<div id="" class="divtags">
+          						{% for itm in art_detail.tags.all  %}
+                        <a href=/blog/tag/{{ itm.id }}/ title="">{{ itm.tagName }}</a>
+                      {% endfor %}
+    						</div><!-- / -->
+    					</div><!-- / -->
+    				</div>
+    				<div class="blog_info">
+        				
+   				</div>
+    			<div class="blog_description">
+     				<content>{{ art_detail.content | safe }}</content>
+            <br/>
+              <div id="" class="clearfix">
+                  <div id="" class="endt">
+                    <a href="#" title="">点击：{{ art_detail.readCount }}</a>
+                    <a href="" title="">评论：{{ art_detail.commitsCount }}</a>
+                  </div><!-- / -->
+                  <div id="" class="endnav">
+                    <a href=../{{ artp.id }}/ title="">上一篇：{{ artp.caption }}</a>
+                    <a href=../{{ artn.id }}/ title="">下一篇：{{ artn.caption }}</a>
+                   </div><!-- / -->
+              </div><!-- / --> 
+    			</div>
+    			</div>
+    			<div id="" class="conblank">
+      			</div><!-- / -->
+          <div id="" class="comments">
+            {% load comments %}
+            {% get_comment_count for art_detail as listcount %}
+            {% ifequal listcount 0 %}
+              <div id="" class="no_comment clearfix">
+                 <a href="#comment_forms">哎呀~还木有人评论耶</a>
+              </div><!-- / -->
+            {% else %}
+              {% get_comment_list for art_detail as comment_list %}
+              {% for comment in comment_list %}
+                <div id="" class="son_comments">
+                  <div id="" class="comment_header">
+                    <a style="background: url(../images/default.png);" class="pica" href="#"></a>
+                    <span>{{ comment.user_name }}</span>
+                  </div><!-- / -->
+                  <div id="" class="comment_detail">
+                    <div class="comment_date">
+                      <span>{{ comment.submit_date|date:"Y-m-d h:m:s" }}</span>
+                    </div>
+                    <p>{{ comment.comment|safe }}</p>
+                  </div><!-- / -->
+                </div><!-- / -->
+                <div id="" class="comment_blank">
+                  
+                </div><!-- / -->
+              {% endfor %}
+            {% endifequal %}
+            <div id="comment_forms" class="comment_form">
+              <h2>发表评论：</h2>
+              {% get_comment_form for art_detail as form %}
+              <form action="{% comment_form_target %}" method="post" accept-charset="utf-8">
+                {% csrf_token %}
+                {{ form.object_pk }}
+                {{ form.content_type }}
+                {{ form.timestamp }}
+                {{ form.security_hash }}
+                <input name="name" placeholder="您的称呼" id="id_name"/>
+                <input name="email" placeholder="您的邮箱" id="id_email"/>
+                <input name="url" placeholder="您的网站" id="id_url"/>
+                <textarea name="comment" id="comments" rows="5" placeholder="您的留言"></textarea>
+                <div id="" class="submitdiv">
+                  <button id="submit_comment" type="submit">提交</button>
+                </div><!-- / -->
+                <input type="hidden" name="next" value="{% url 'blogdetail' art_detail.id %}"/>
+              </form>
+            </div><!-- / -->
+          </div><!-- / -->
+		</div>
+		<div id="blogright">
+			{% block tools %}
+      {{ block.super }}
+      {% endblock %}
+	</div><!-- / -->
+{% endblock %}
+</body>
+</html>

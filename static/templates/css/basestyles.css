@@ -1,0 +1,155 @@
+* {padding: 0;
+	margin-left: 0}
+
+.clearfix:after {
+	content: ".";
+	height: 0;
+	clear:both;
+	visibility: hidden;
+	display: block;
+}
+
+body {font:62.5% "微软雅黑";
+		background-color: #FFFFFF;}
+
+div#header {width: 100%;
+		height: 6em;
+		position: fixed;
+		left: 0;
+		top:0;
+		overflow: hidden;
+		background-color: #EBEEF3;
+		box-shadow: 0 0 12px rgba(60,60,60,0.3);
+		}
+
+div#nav {width: 1000px;
+	margin: auto;
+		}
+
+div#navlogo a {
+	background: url(../images/logo_nav.png) no-repeat;
+	display: block;
+	height: 6em;
+	width: 26em;
+	position: absolute;
+}
+
+ul#menu {
+	float: right;
+	width: 100%;
+	margin-top: 1.5em;
+	text-decoration: none;
+	list-style: none;
+}
+
+ul#menu li {float: right;
+	text-decoration: none;
+		}
+
+ul#menu li a{text-decoration: none;
+			display: block;
+			font-size: 2em;
+			text-align: center;
+			width: 4em;
+			color: black;
+			transition: .15s;
+			}
+
+ul#menu li a:hover{
+			color: #1D8DCD;
+}
+
+ul#menu li:hover > span {
+	display: block;
+}
+
+ul#menu li span{
+	display: none;
+	text-align: center;
+	cursor:auto;
+}
+
+div#foomenu ul {
+	list-style: none;
+}
+
+div#foomenu ul li {
+	float: left;
+}
+
+div#foomenu ul li a{
+	display: block;
+	color: black;
+	width: 5em;
+	text-decoration: none;
+	text-align: center;
+}
+
+div#foomenu ul li a:hover {
+	color: #18E1F3;
+}
+
+div#fooword {
+	float: right;
+}
+
+div#foocontent {
+	width: 1000px;
+	padding-top: 0.5em;
+	margin: auto;
+}
+
+footer {bottom: 0;
+		position: relative;
+		width: 100%;
+		height: 4em;
+		background-color: #EBEEF3;
+		border-top-width: 2px;
+		border-top-style: solid;
+		border-top-color: #0F2633;}
+
+div#content {
+	padding-bottom: 6em;
+	width: 960px;
+	min-height: 100%;
+	overflow: hidden;
+	margin: auto;
+	margin-top: 14em;
+}
+
+
+.index_content {
+	background-color: #F9F9F9;
+	overflow: hidden;
+}
+
+.index_content > span {
+	
+}
+
+.index_content > span > a {
+	float: left;
+	display: block;
+	height: 1.8em;
+	padding-top: 2px;
+	text-align: center;
+	width: 2em;
+	text-decoration: none;
+	margin-right: 2px;
+	color: white;
+	background-color: #1D8DCD;
+}
+
+.index_content > span > a:hover {
+	background-color: #30A7EB;
+}
+
+#indexfirst {
+	width: 4em;
+}
+
+#indexlast {
+	width: 4em;
+}
+
+

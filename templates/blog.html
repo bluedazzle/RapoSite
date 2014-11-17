@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head id="header" class="">
+	<link href="/css/blog.css" rel="stylesheet" type="text/css" />
+	{% block title %}RaPoSpectre -- 博客{% endblock %}
+</head><!-- /header -->
+<body>
+	{% block content %}
+  {% load comments %}
+	<div id="picheader" class="">
+		
+	</div><!-- / -->
+	<div id="blogcontent" class="">
+		<div id="blogleft">
+			{% for blog in article_list %}
+  				<div class="blog_body">
+    				<div class="blog_title clearfix">
+              <div id="" class="titledate">
+                <div id="" class="m_d">
+                    <a>{{ blog.createTime|date:"d" }}</a>
+                    <a>{{ blog.createTime|date:"m" }}</a>
+                </div><!-- / -->
+                <div id="" class="titlerec">
+                  <span>原</span>
+                  <span>荐<r/span>
+                </div><!-- / -->
+                <div id="" class="titleyear">
+                  <span>{{ blog.createTime|date:"Y" }}年</span>
+                </div><!-- / -->
+              </div><!-- / -->
+              <div id="" class="divtitlename">
+                <a class="titlename" href=/blog/{{ blog.id}}/>{{ blog.caption }}</a>
+              </div><!-- / -->
+              <div id="" class="tagclassif">
+                <div id="" class="divclassif">
+                  <a href=/blog/classify/{{ blog.classification.id }}/>{{ blog.classification }}</a>
+                </div><!-- / -->
+                <div id="" class="divtags">
+                    {% for itm in blog.tags.all %}
+                      <a href=/blog/tag/{{ itm.id }}/>{{ itm.tagName }}</a>
+                    {% endfor %}
+                </div><!-- / -->
+              </div><!-- / -->
+            </div>
+    				<div class="blog_info">
+        				
+   				</div>
+    			<div class="blog_description">
+     				<p>{{ blog.content }}</p>
+            <br/>
+            <div id="" class="art_end">
+              <a href=/blog/{{ blog.id }}/ title="">查看全文</a>
+              <div id="" class="art_end_son">
+                  <a href="#" title="">点击：{{ blog.readCount }}</a>
+                  {% get_comment_count for blog as listcount %}
+                  <a href="" title="">评论：{{ listcount }}</a>
+              </div><!-- / -->
+            </div><!-- / -->
+            
+    			</div>
+    			</div>
+    			<div id="" class="conblank">
+      			</div><!-- / -->
+			{% endfor %}
+      {% block index %}
+        <div class="index_content">
+          {% if index_list %}
+            <span><a id="indexfirst" href=/blog/{{ url }}/{{ prepage }}/>上一页</a></span>
+            {% for itms in index_list %}
+              <span><a href=/blog/{{ url }}/{{ itms }}/ title="">{{ itms }}</a></span>
+            {% endfor %}
+            <span><a id="indexlast" href=/blog/{{ url }}/{{ nextpage }}/>下一页</a></span>
+          {% endif %}
+        </div>
+      {% endblock %}
+		</div>
+		<div id="blogright">
+      {% block tools %}
+        {{ block.super }}
+      {% endblock %}
+		</div>
+	</div><!-- / -->
+{% endblock %}
+</body>
+</html>

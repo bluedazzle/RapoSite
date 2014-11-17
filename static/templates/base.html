@@ -1,0 +1,154 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+	<link href="css/basestyles.css" rel="stylesheet" type="text/css" />
+	<link href="css/blog.css" rel="stylesheet" type="text/css" />
+  <link href="css/know.css" rel="stylesheet" type="text/css" />
+  <link href="css/index.css" rel="stylesheet" type="text/css" />
+	<link href="css/tools.css" rel="stylesheet" type="text/css" />
+	<title>{% block title %}{{ blogtitle }}{% endblock %}</title>
+</head>
+<body>
+	<div id="header" class="clearfix">
+		<div id="nav" class="">
+			<div id="navlogo" class="">
+				<a href="/"></a>
+			</div><!-- / -->
+			<div id="navmenu">
+				<ul id="menu" class="">
+					<li><a href="/mycomment/" title="">留言</a>
+						<span>Comments</span>
+					</li>
+					<li><a href="/about/" title="">关于</a>
+						<span>About</span>
+					</li>
+					<li><a href="/knowledge/" title="">姿势</a>
+						<span>Knowledge</span>
+					</li>
+					<li><a href="/blog/" title="">博客</a>
+						<span>Blog</span>
+					</li>
+					<li><a href="/" title="">首页</a>
+						<span>Index</span>
+					</li>
+				</ul><!-- / -->
+			</div>
+		</div><!-- / -->
+	</div><!-- header/ -->
+  <div id="indexpic" class="">
+    {% block picindex %}
+    {% endblock %}
+  </div><!-- / -->
+	<div id="content" class="">
+		<div id="soncontent" class="">
+			{% block content %}
+        {% block index %}
+        {% endblock index %}
+					{% block tools %}
+	<div id="" class="super_tools">
+		<div id="search" class="clearfix">
+          <input type="text" name="" value="" placeholder="还木有做好~">
+          <button type="submit">搜索</button>
+      </div><!-- / -->
+      {% if nav_list %}
+      <div id="classify" class="">
+          <div id="" class="tooltitle">
+             分类导航
+          </div><!-- / -->
+          <div id="classifycontent" class="">
+             {% for itms in nav_list %}
+                {% if forloop.counter|divisibleby:2 %}
+                  <a style="float:right;" href=/blog/classify/{{ itms.id }}/ title="">{{ itms.cName }}</a>
+                {% else %}
+                  <a style="float:left;" href=/blog/classify/{{ itms.id }}/ title="">{{ itms.cName }}</a>
+                {% endif %}
+             {% endfor %}
+          </div><!-- / -->
+      </div><!-- / -->
+      <div id="" class="blank">
+        
+      </div><!-- / -->
+      {% endif %}
+      {% if rec_list %}
+      <div id="" class="tools">
+          <div id="" class="tooltitle">
+             近期文章
+          </div><!-- / -->
+          <div id="" class="recdiv">
+             {% for itms in rec_list %}
+               <a href=/blog/{{ itms.id }}/ title="">{{ itms.caption }}</a>
+             {% endfor %}
+          </div><!-- / -->
+      </div><!-- / -->
+      <div id="" class="blank">
+        
+      </div><!-- / -->
+      {% endif %}
+      {% if click_list %}
+      <div id="" class="tools">
+          <div id="" class="tooltitle">
+             点击排行
+          </div><!-- / -->
+          <div id="" class="recdiv">
+             {% for itms in click_list %}
+               <a href=/blog/{{ itms.id }}/ title="">{{ itms.caption }}</a>
+             {% endfor %}
+          </div><!-- / -->
+      </div><!-- / -->
+      <div id="" class="blank">
+        
+      </div><!-- / -->
+      {% endif %}
+      {% if links_list %}
+      <div id="" class="tools">
+          <div id="" class="tooltitle">
+             友情链接
+          </div><!-- / -->
+          <div id="" class="recdiv">
+             {% for itms in links_list %}
+               <a href={{ itms.url }} title="">{{ itms.name }}</a>
+             {% endfor %}
+          </div><!-- / -->
+      </div><!-- / -->
+      <div id="" class="blank">
+        
+      </div><!-- / -->
+      {% endif %}
+      {% if visiter_list %}
+      <div id="reclay" class="tools">
+          <div id="" class="tooltitle">
+             最近访客
+          </div><!-- / -->
+          <div id="recentdiv" class="recdiv">
+            {% for item in visiter_list %}
+              <div id="" class="recent">
+                <a class="visheader" href=""></a>
+                <span>{{ item.location }}</span>
+              </div><!-- / -->
+              {% endfor %}
+          </div><!-- / -->
+          
+      </div><!-- / -->
+      {% endif %}
+		</div>
+	</div><!-- / -->
+				{% endblock tools %}
+			{% endblock content %}
+		</div><!-- / -->
+	</div><!-- 正文/ -->
+	<footer>
+		<div id="foocontent" class="">
+			<div id="foomenu">
+				<ul id="" class="">
+					<li><a href="/" title="">返回首页</a></li>
+					<li><a href="#" title="">与我联系</a></li>
+					<li><a href="/admin/" title="">管理登陆</a></li>
+				</ul><!-- / -->
+			</div>
+			<div id="fooword" class="">
+				<span>Designed by <b><i>RaPoSpectre</i></b> | Copyright 2014</span>
+			</div><!-- / -->
+		</div><!-- / -->
+	</foot
+</body>
+</html>
